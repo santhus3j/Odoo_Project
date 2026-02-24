@@ -1,0 +1,46 @@
+<odoo>
+    <!-- Views and actions for recording sales of dishes. When a sale
+         is recorded the backend model deducts required ingredient
+         quantities from stock (see models/sales_analysis.py). -->
+    <record id="view_sale_form" model="ir.ui.view">
+        <field name="name">sale.form</field>
+        <field name="model">restaurant.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="dish_id"/>
+                        <field name="quantity_sold"/>
+                        <field name="sale_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open sales records -->
+    <record id="action_sale" model="ir.actions.act_window">
+        <field name="name">Sales</field>
+        <field name="res_model">restaurant.sale</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- List (tree) view for quick overview of recent sales -->
+    <record id="view_sale_tree" model="ir.ui.view">
+        <field name="name">sale.tree</field>
+        <field name="model">restaurant.sale</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="dish_id"/>
+                <field name="quantity_sold"/>
+                <field name="sale_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Menu entry for Sales under Restaurant root -->
+    <menuitem id="menu_sales"
+              name="Sales"
+              parent="menu_restaurant_root"
+              action="action_sale"/>
+</odoo>

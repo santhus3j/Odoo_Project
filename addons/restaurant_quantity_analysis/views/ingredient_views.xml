@@ -1,0 +1,53 @@
+<odoo>
+
+    <!-- Views and menu for ingredients. These views allow managing
+         ingredient stock levels used by dishes. -->
+
+    <!-- Action -->
+    <record id="action_ingredient" model="ir.actions.act_window">
+        <field name="name">Ingredients</field>
+        <field name="res_model">restaurant.ingredient</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_restaurant_root" name="Restaurant"/>
+
+    <!-- Sub Menu -->
+    <menuitem id="menu_ingredient"
+              name="Ingredients"
+              parent="menu_restaurant_root"
+              action="action_ingredient"/>
+
+    <!-- List View (Previously Tree View) -->
+    <record id="view_ingredient_list" model="ir.ui.view">
+        <field name="name">ingredient.list</field>
+        <field name="model">restaurant.ingredient</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="quantity_available"/>
+                <field name="minimum_quantity"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_ingredient_form" model="ir.ui.view">
+        <field name="name">ingredient.form</field>
+        <field name="model">restaurant.ingredient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="quantity_available"/>
+                        <field name="minimum_quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

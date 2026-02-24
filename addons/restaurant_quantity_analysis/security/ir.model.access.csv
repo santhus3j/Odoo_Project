@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_restaurant_ingredient,restaurant.ingredient,model_restaurant_ingredient,,1,1,1,1
+access_restaurant_dish,restaurant.dish,model_restaurant_dish,,1,1,1,1
+access_restaurant_sale,restaurant.sale,model_restaurant_sale,,1,1,1,1
+access_dish_ingredient,restaurant.dish.ingredient,model_restaurant_dish_ingredient,,1,1,1,1

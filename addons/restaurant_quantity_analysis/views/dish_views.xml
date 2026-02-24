@@ -1,0 +1,48 @@
+<odoo>
+    <!-- Views for `restaurant.dish` model: form and list (tree) -->
+    <!-- The form view contains an editable list of ingredient lines so
+         users can specify which ingredients (and quantities) a dish needs. -->
+    <record id="view_dish_form" model="ir.ui.view">
+        <field name="name">dish.form</field>
+        <field name="model">restaurant.dish</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="ingredient_ids">
+                            <list editable="bottom">
+                                <field name="ingredient_id"/>
+                                <field name="quantity_required"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Simple list view showing dish names -->
+    <record id="view_dish_tree" model="ir.ui.view">
+        <field name="name">dish.tree</field>
+        <field name="model">restaurant.dish</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action to open the dish list/form -->
+    <record id="action_dish" model="ir.actions.act_window">
+        <field name="name">Dishes</field>
+        <field name="res_model">restaurant.dish</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu entry under the Restaurant root for dishes -->
+    <menuitem id="menu_dish"
+              name="Dishes"
+              parent="menu_restaurant_root"
+              action="action_dish"/>
+</odoo>
